@@ -1,0 +1,39 @@
+name: Release pfQuest-epoch on changes
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pfQuest-epoch/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: pfQuest-epoch-${{ github.run_number }}
+          release_name: Release pfQuest-epoch-${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Zip pfQuest-epoch folder
+        run: |
+          zip -r pfQuest-epoch.zip pfQuest-epoch
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./pfQuest-epoch.zip
+          asset_name: pfQuest-epoch.zip
+          asset_content_type: application/zip
