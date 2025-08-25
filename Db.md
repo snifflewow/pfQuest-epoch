@@ -182,15 +182,9 @@ Contains quest information, including start and end points, level, and the next 
 
 Contains a list of items required for a quest that are usable in the floating quest log UI.
 
-**Format**
-(No format or example provided in the original text)
-
 ### `refloot-epoch.lua`
 
 Contains item requirements for specific quests, such as listing all anvil objects for the "Broken Tools" quest.
-
-**Format**
-(No format or example provided in the original text)
 
 ### `units-epoch.lua`
 
