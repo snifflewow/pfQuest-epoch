@@ -1,17 +1,15 @@
 # How to contribute
 <!--toc:start-->
-- [How to contribute](#how-to-contribute)
-- [Table of Contents](#table-of-contents)
-  - [Introduction {#introduction}](#introduction-introduction)
-  - [Macros {#macros}](#macros-macros)
-  - [Example {#example}](#example-example)
-  - [Issue {#issue}](#issue-issue)
-  - [Pull request {#pull-request}](#pull-request-pull-request)
+  - [Introduction](#introduction)
+  - [Macros](#macros)
+  - [Example](#example)
+  - [Issue](#issue)
+  - [Pull request](#pull-request)
 <!--toc:end-->
 
 ---
 
-## Introduction {#introduction}
+## Introduction
 
 There are two main ways to contribute. The easiest, but slower is to create an issue
 
@@ -21,7 +19,7 @@ You might want to also look into the "pfQuest-tbc" databases to learn how entrie
 Demo quest commit: [Do Slavers Keep Records?
 ](https://github.com/snifflwow/pfQuest-epoch/commit/39abc567413a0c004ea22ec38fed4eb2e486e9d6)
 
-## Macros {#macros}
+## Macros
 
 Your Current Cords:
 `/script SetMapToCurrentZone() local x,y=GetPlayerMapPosition("player") DEFAULT_CHAT_FRAME:AddMessage(format("%s, %s: %.1f, %.1f",GetZoneText(),GetSubZoneText(),x*100,y*100))`
@@ -39,11 +37,11 @@ Hover Over Item ID:
 Object ID:
 No Possible way to get this info currently
 
-## Example {#example}
+## Example
 
-## Issue {#issue}
+## Issue
 
-##  Pull request {#pull-request}
+##  Pull request
 If you wish to add more content, feel free to contribute and send [Pull Requests](https://github.com/snifflewow/pfQuest-epoch/pulls).
 
 notes:
