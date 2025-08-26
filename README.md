@@ -14,7 +14,7 @@ pfQuest-epoch is dependant on pfQuest to work.
 
 ## Contribute
 To my knowledge there is no way to automate building data programatically so 
-I urge everyone to check out how to contribute new information or improving on existing
+I urge you to check out how to contribute new information or improving on existing
 data.
 [How to contribute](./Contribute.md)
 
