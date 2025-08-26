@@ -7,6 +7,8 @@ Short value explanation:
 fac -- Faction by letter:  A (Alliance), H (Horde), AH (both)
 U -- Unit 
 O -- Object
+I -- Item
+IR -- Item req
 
 ---
 
@@ -15,10 +17,10 @@ O -- Object
 ### `quests-epoch.lua`
 
 Contains quest information, including start and end points, level, and the next quest in a chain.
+Not all fields are mandatory
 
 **Format**
 
-```lua
 [QUESTID#] = {
   ["start"] = {
     ["U"] = { UNITID# },
@@ -27,10 +29,18 @@ Contains quest information, including start and end points, level, and the next 
     ["U"] = { UNITID# },
   },
   ["lvl"] = quest level,
-  ["min"] = required level,
+  ["min"] = minimum level,
   ["next"] = next quest id after this one,
+  ["pre"] = quest id for previous quest in chain
+  ["close"] = Other quests that can\'t be taken togheter (profession specialization).
+  ["skill"] = skill id (example requires leatherworking)
+  ["obj"] = { Ojectives for the quest
+      ["I"] = { Item id to collect  }, 
+      ["U"] = { units id to kill },
+      ["O"] = { object id },
+      ["IR"] = { item-req id }
+    }
 },
-```
 
 **Example**
 
@@ -42,6 +52,8 @@ Contains quest information, including start and end points, level, and the next 
   ["end"] = {
     ["U"] = { 46164 },
   },
+  ["obj"] = { 
+      ["I"] = { 8165, 8203, 8204 },
   ["lvl"] = 50,
   ["min"] = 50,
   ["next"] = 27242,
