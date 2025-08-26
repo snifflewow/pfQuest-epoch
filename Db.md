@@ -31,6 +31,9 @@ Not all fields are mandatory.
     ["pre"]   = prev_quest_id, -- Previous quest in the chain
     ["close"] = { conflicting_quest_ids }, -- Quests that cannot be taken together (e.g., profession specializations)
     ["skill"] = skill_id,     -- Required profession/skill ID (e.g., 165 (Leatherworking))
+    ["race"] = race_requirement, -- Race bitflag, advanced see pfQuest code https://github.com/shagu/pfQuest/blob/104f35678ca39ab1fb78b655f815cc7016f5e0c8/database.lua#L333
+    ["class"] = class_requirement, -- see https://github.com/shagu/pfQuest/blob/104f35678ca39ab1fb78b655f815cc7016f5e0c8/database.lua#L351
+    ["event"] = event_id, -- Event id
     ["obj"] = {  -- Quest objectives
         ["I"] = { item_ids_to_collect },  -- Items to collect
         ["U"] = { unit_ids_to_kill },    -- Units to kill
@@ -71,8 +74,9 @@ Both quest NPCs and mobs are in this file.
         [1] = { x, y, zoneid, respawn },
         [2] = { x, y, zoneid, respawn },
     },
-    ["fac"] = "faction",
-    ["lvl"] = "level", -- can be ranges like 21-23
+    ["fac"] = faction,
+    ["lvl"] = level, -- can be ranges like 21-23
+    ["rnk"] = rank  -- 1 = elite?, 2 = rare elite?, no rank = normal mob
 },
 ```
 
@@ -157,7 +161,7 @@ Contains object information, such as coordinates and ID.
     ["coords"] = {
         [1] = { x, y, zoneid, respawn },
     },
-    ["fac"] = "FACTIONLETTER"
+    ["fac"] = faction_letters
 },
 ```
 
@@ -244,7 +248,7 @@ Contains item IDs and their corresponding names.
 
 **Format:**
 ```lua
-[ITEMID#] = "ITEMNAME",
+[ITEMID#] = ITEMNAME,
 ```
 
 ---
@@ -254,7 +258,7 @@ Contains object IDs and their corresponding names.
 
 **Format:**
 ```lua
-[OBJECTID#] = "OBJECTNAME",
+[OBJECTID#] = OBJECTNAME,
 ```
 
 ---
@@ -264,7 +268,7 @@ Contains IDs and names for custom professions only.
 
 **Format:**
 ```lua
-[PROFESSIONID#] = "PROFESSIONNAME",
+[PROFESSIONID#] = PROFESSIONNAME,
 ```
 
 ---
@@ -275,9 +279,9 @@ Contains quest IDs and their title, objective, and description.
 **Format:**
 ```lua
 [QUESTID#] = {
-    ["T"] = "QUESTTITLE",
-    ["O"] = "QUESTOBJECTIVE",
-    ["D"] = "QUESTDESCRIPTION",
+    ["T"] = quest_title
+    ["O"] = quest_ojective,
+    ["D"] = quest_description,
 },
 ```
 
@@ -288,7 +292,7 @@ Contains unit IDs and their corresponding names.
 
 **Format:**
 ```lua
-[UNITID#] = "UNITNAME",
+[UNITID#] = unit_name,
 ```
 
 ---
@@ -298,5 +302,5 @@ Contains zone IDs and their corresponding names.
 
 **Format:**
 ```lua
-[ZONEID#] = "ZONENAME",
+[ZONEID#] = zone_name,
 ```
