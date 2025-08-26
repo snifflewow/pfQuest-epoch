@@ -18,6 +18,8 @@ Gather as much data as you can about the thing you want to add.
 For quests this will be, starting entity(npc or object or item), ending entity
 objectives, english quest text (see macros below).
 
+[Zone IDs](https://github.com/Bennylavaa/wowchat-epoch/blob/main/src/main/resources/pre_cata_areas.csv)
+
 ## Macros
 
 Your Current Cords:
@@ -25,7 +27,6 @@ Your Current Cords:
 /script SetMapToCurrentZone() local x,y=GetPlayerMapPosition("player") DEFAULT_CHAT_FRAME:AddMessage(format("%s, %s: %.1f, %.1f",GetZoneText(),GetSubZoneText(),x*100,y*100))
 ```
 
-[Zone IDs](https://github.com/Bennylavaa/wowchat-epoch/blob/main/src/main/resources/pre_cata_areas.csv)
 
 Targeted Unit Information:
 
@@ -45,7 +46,7 @@ Hover Over Item ID:
 ```
 
 Object ID:
-No Possible way to get this info currently
+If you know of a way to extract this from the client make an issue
 
 ## Example
 Demo quest commit: [Do Slavers Keep Records?
@@ -55,7 +56,7 @@ Demo quest commit: [Do Slavers Keep Records?
 First search in issues to see if there already is one for whatever addition you
 want to report.
 Gather as much information you can about what you want to add.
-This can be npc names, items, quest objectives, coordinates and so on.
+This can be npc names, items, quest objectives, coordinates, zone, and so on.
 You can use the macros from the section above to help.
 Make a issue over at [issues](https://github.com/snifflewow/pfQuest-epoch/issues)
 
