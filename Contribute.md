@@ -1,15 +1,19 @@
 # How to contribute
-
-# Table of Contents
-- [Introduction](#introduction)
-- [Macros](#macros)
-- [Example](#example)
-- [via issue](#issue)
-- [via pull request](#issue)
+<!--toc:start-->
+- [How to contribute](#how-to-contribute)
+- [Table of Contents](#table-of-contents)
+  - [Introduction {#introduction}](#introduction-introduction)
+  - [Macros {#macros}](#macros-macros)
+  - [Example {#example}](#example-example)
+  - [Issue {#issue}](#issue-issue)
+  - [Pull request {#pull-request}](#pull-request-pull-request)
+<!--toc:end-->
 
 ---
 
 ## Introduction {#introduction}
+
+There are two main ways to contribute. The easiest, but slower is to create an issue
 
 The database format in use, is similar to the existing pfQuest databases.
 You might want to also look into the "pfQuest-tbc" databases to learn how entries could be removed or manipulated.
