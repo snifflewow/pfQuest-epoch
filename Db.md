@@ -21,26 +21,28 @@ Not all fields are mandatory
 
 **Format**
 
+```lua
 [QUESTID#] = {
-  ["start"] = {
-    ["U"] = { UNITID# },
-  },
-  ["end"] = {
-    ["U"] = { UNITID# },
-  },
-  ["lvl"] = quest level,
-  ["min"] = minimum level,
-  ["next"] = next quest id after this one,
-  ["pre"] = quest id for previous quest in chain
-  ["close"] = Other quests that can\'t be taken togheter (profession specialization).
-  ["skill"] = skill id (example requires leatherworking)
-  ["obj"] = { Ojectives for the quest
-      ["I"] = { Item id to collect  }, 
-      ["U"] = { units id to kill },
-      ["O"] = { object id },
-      ["IR"] = { item-req id }
-    }
-},
+    ["start"] = {
+        ["U"] = { UNITID# },  -- Quest giver unit ID
+    },
+    ["end"] = {
+        ["U"] = { UNITID# },  -- Quest turn-in unit ID
+    },
+    ["lvl"]   = quest_level,  -- Recommended quest level
+    ["min"]   = min_level,    -- Minimum level to accept
+    ["next"]  = next_quest_id, -- Next quest in the chain
+    ["pre"]   = prev_quest_id, -- Previous quest in the chain
+    ["close"] = { conflicting_quest_ids }, -- Quests that cannot be taken together (e.g., profession specializations)
+    ["skill"] = skill_id,     -- Required profession/skill ID (e.g., "Leatherworking")
+    ["obj"] = {  -- Quest objectives
+        ["I"] = { item_ids_to_collect },  -- Items to collect
+        ["U"] = { unit_ids_to_kill },    -- Units to kill
+        ["O"] = { object_ids },          -- Objects to interact with
+        ["IR"] = { item_req_ids },       -- Item requirements
+    },
+}
+```
 
 **Example**
 
@@ -69,12 +71,12 @@ Both quest npc's and mobs are in this file.
 
 ```lua
 [UNITID#] = {
-  ["coords"] = {
-    [1] = { x, y, zoneid, respawn },
+  ["coords"] = { -- List of spawn locations and respawn timer
+    [1] = { x, y, zoneid, respawn }, 
     [2] = { x, y, zoneid, respawn },
   },
   ["fac"] = "faction", 
-  ["lvl"] = "level",
+  ["lvl"] = "level", -- can be ranges like 21-23
 },
 ```
 
@@ -99,14 +101,17 @@ Contains item information, including which units (`"U"`) and objects (`"O"`) the
 
 ```lua
 [ITEMID#] = {
-  ["O"] = {
+  ["O"] = { -- object
     [OBJECTID#] = drop%number, -- first object it drops from
     [OBJECTID#] = drop%number, -- second object it drops from
   },
-  ["U"] = {
+  ["U"] = { -- unit
     [UNITID#] = drop%number, -- first npc it drops from
     [UNITID#] = drop%number, -- second npc it drops from
   },
+  ["V"] = { -- vendor
+    [UNITID#] = 0,
+  }
 },
 ```
 
@@ -158,6 +163,7 @@ Contains object information, such as coordinates and ID.
   ["coords"] = {
     [1] = { x, y, zoneid, respawn },
   },
+  ["fac"] = "FACTIONLETTER"
 },
 ```
 
