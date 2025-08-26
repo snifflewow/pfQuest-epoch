@@ -6,7 +6,7 @@
 - **U** -- Unit
 - **O** -- Object
 - **I** -- Item
-- **IR** -- Item requirement
+- **IR** -- Itemreq, see quests-itemreq-epoch
 
 ---
 
@@ -30,7 +30,7 @@ Not all fields are mandatory.
     ["next"]  = next_quest_id, -- Next quest in the chain
     ["pre"]   = prev_quest_id, -- Previous quest in the chain
     ["close"] = { conflicting_quest_ids }, -- Quests that cannot be taken together (e.g., profession specializations)
-    ["skill"] = skill_id,     -- Required profession/skill ID (e.g., "Leatherworking")
+    ["skill"] = skill_id,     -- Required profession/skill ID (e.g., 165 (Leatherworking))
     ["obj"] = {  -- Quest objectives
         ["I"] = { item_ids_to_collect },  -- Items to collect
         ["U"] = { unit_ids_to_kill },    -- Units to kill

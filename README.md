@@ -13,7 +13,10 @@ pfQuest-epoch is dependant on pfQuest to work.
 5. Copy "pfQuest-epoch" into Wow-Directory\Interface\AddOns
 
 ## Contribute
-[See file contribute](./Contribute.md)
+To my knowledge there is no way to automate building data programatically so 
+I urge everyone to check out how to contribute new information or improving on existing
+data.
+[How to contribute](./Contribute.md)
 
 ## TODO (In the order below)
 
