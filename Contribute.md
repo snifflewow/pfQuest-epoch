@@ -1,4 +1,4 @@
-# How to contribute new quests, npc, or objects
+# How to contribute
 
 # Table of Contents
 - [Introduction](#introduction)
@@ -15,7 +15,7 @@ The database format in use, is similar to the existing pfQuest databases.
 You might want to also look into the "pfQuest-tbc" databases to learn how entries could be removed or manipulated.
 
 Demo quest commit: [Do Slavers Keep Records?
-](https://github.com/Bennylavaa/pfQuest-epoch/commit/39abc567413a0c004ea22ec38fed4eb2e486e9d6)
+](https://github.com/snifflwow/pfQuest-epoch/commit/39abc567413a0c004ea22ec38fed4eb2e486e9d6)
 
 ## Macros {#macros}
 
