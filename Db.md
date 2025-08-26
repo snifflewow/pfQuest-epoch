@@ -35,7 +35,7 @@ Not all fields are mandatory.
         ["I"] = { item_ids_to_collect },  -- Items to collect
         ["U"] = { unit_ids_to_kill },    -- Units to kill
         ["O"] = { object_ids },          -- Objects to interact with
-        ["IR"] = { item_req_ids },       -- Item requirements
+        ["IR"] = { item_req_ids },       -- see quests-itemreq-epoch.lua
     },
 }
 ```
