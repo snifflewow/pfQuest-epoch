@@ -11,13 +11,12 @@
 
 ## Introduction
 
-There are two main ways to contribute. The easiest, but slower is to create an issue
+To help include or improve data in this project you can either open an issue 
+or create a pull request.
 
-The database format in use, is similar to the existing pfQuest databases.
-You might want to also look into the "pfQuest-tbc" databases to learn how entries could be removed or manipulated.
-
-Demo quest commit: [Do Slavers Keep Records?
-](https://github.com/snifflwow/pfQuest-epoch/commit/39abc567413a0c004ea22ec38fed4eb2e486e9d6)
+Gather as much data as you can about the thing you want to add.
+For quests this will be, starting entity(npc or object or item), ending entity
+objectives, english quest text (see macros below).
 
 ## Macros
 
@@ -38,15 +37,21 @@ Object ID:
 No Possible way to get this info currently
 
 ## Example
+Demo quest commit: [Do Slavers Keep Records?
+](https://github.com/snifflwow/pfQuest-epoch/commit/39abc567413a0c004ea22ec38fed4eb2e486e9d6)
 
-## Issue
+### Issue
+First search in issues to see if there already is one for whatever addition you
+want to report.
+Gather as much information you can about what you want to add.
+This can be npc names, items, quest objectives, coordinates and so on.
+You can use the macros from the section above to help.
+Make a issue over at [issues](https://github.com/snifflewow/pfQuest-epoch/issues)
 
-##  Pull request
-If you wish to add more content, feel free to contribute and send [Pull Requests](https://github.com/snifflewow/pfQuest-epoch/pulls).
+###  Pull request
+If you have the technical knowhow to edit and make a pull request then please
+checkout the [db spec](./Db.md) to learn more about the structure of the addon.
 
-notes:
-macros
-coordinates
-structure
-example
-pr or issue with update
+Note that not all id's are included in this project. Try to make sure the
+things you are adding like objects/items/npcs are not in the original pfquest adddon
+since they exist in vanilla.
