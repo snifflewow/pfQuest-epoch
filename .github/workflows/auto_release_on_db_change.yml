@@ -39,20 +39,30 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required to fetch all history for tag operations
 
       - name: Download pfQuest-epoch.zip artifact
         uses: actions/download-artifact@v4
         with:
           name: pfQuest-epoch.zip
 
-      - name: Delete existing 'latest' release (if it exists)
+      - name: Delete existing 'latest' tag and release (if they exist)
         run: |
+          git tag -d latest || true
+          git push origin :refs/tags/latest || true
+
           LATEST_RELEASE_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/releases/tags/latest" | jq -r '.id')
           if [ "$LATEST_RELEASE_ID" != "null" ]; then
             curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
               "https://api.github.com/repos/${{ github.repository }}/releases/$LATEST_RELEASE_ID" || true
           fi
+
+      - name: Create new 'latest' tag
+        run: |
+          git tag latest
+          git push origin latest
 
       - name: Create 'latest' Release and Upload Asset
         uses: softprops/action-gh-release@v2
