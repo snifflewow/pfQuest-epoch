@@ -36,6 +36,11 @@ jobs:
           asset_name: pfQuest-epoch.zip
           asset_content_type: application/zip
 
+  latest:
+    runs-on: ubuntu-latest
+    environment:
+          name: production
+    steps:
       - name: Delete existing 'latest' release (if it exists)
         run: |
           LATEST_RELEASE_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
