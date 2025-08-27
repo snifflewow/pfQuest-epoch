@@ -11,64 +11,50 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create Versioned Release
-        id: create_versioned_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Zip pfQuest-epoch folder
+        run: zip -r pfQuest-epoch.zip pfQuest-epoch
+
+      - name: Create Versioned Release and Upload Asset
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: pfQuest-epoch-${{ github.run_number }}
-          release_name: Release pfQuest-epoch-${{ github.run_number }}
-          draft: false
-          prerelease: false
-
-      - name: Zip pfQuest-epoch folder
-        run: |
-          zip -r pfQuest-epoch.zip pfQuest-epoch
-
-      - name: Upload Release Asset to Versioned Release
-        uses: actions/upload-release-asset@v1
+          name: Release pfQuest-epoch-${{ github.run_number }}
+          files: pfQuest-epoch.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload pfQuest-epoch.zip as artifact
+        uses: actions/upload-artifact@v3
         with:
-          upload_url: ${{ steps.create_versioned_release.outputs.upload_url }}
-          asset_path: ./pfQuest-epoch.zip
-          asset_name: pfQuest-epoch.zip
-          asset_content_type: application/zip
+          name: pfQuest-epoch.zip
+          path: pfQuest-epoch.zip
 
   latest:
     needs: release
     runs-on: ubuntu-latest
-    environment:
-          name: production
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download pfQuest-epoch.zip artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: pfQuest-epoch.zip
+
       - name: Delete existing 'latest' release (if it exists)
         run: |
           LATEST_RELEASE_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/releases/tags/latest" | jq -r '.id')
-
           if [ "$LATEST_RELEASE_ID" != "null" ]; then
             curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/${{ github.repository }}/releases/$LATEST_RELEASE_ID"
+              "https://api.github.com/repos/${{ github.repository }}/releases/$LATEST_RELEASE_ID" || true
           fi
 
-      - name: Create 'latest' Release
-        id: create_latest_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create 'latest' Release and Upload Asset
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
-          release_name: Latest Release (pfQuest-epoch)
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset to 'latest' Release
-        uses: actions/upload-release-asset@v1
+          name: Latest Release (pfQuest-epoch)
+          files: pfQuest-epoch.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_latest_release.outputs.upload_url }}
-          asset_path: ./pfQuest-epoch.zip
-          asset_name: pfQuest-epoch.zip
-          asset_content_type: application/zip
