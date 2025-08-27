@@ -19,11 +19,9 @@ jobs:
       - name: Create Versioned Release and Upload Asset
         uses: softprops/action-gh-release@v2
         with:
-          # Use a dynamic tag based on the run number
           tag_name: pfQuest-epoch-${{ github.run_number }}
           name: Release pfQuest-epoch-${{ github.run_number }}
           files: pfQuest-epoch.zip
-          # Set the 'latest' flag on this release
           latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
